@@ -1,7 +1,10 @@
 package com.co.sistematransporte.clases;
 
+import java.util.ArrayList;
+import static java.util.Collections.list;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class FranjaDeHorario {
 
@@ -43,9 +46,23 @@ public class FranjaDeHorario {
 	}
 	
 	public boolean agregarTarifa(String idTarifa, Integer valorTarifa, String tipoTarifa){
-		
-		return false;
-		
+            
+            try {
+                List<Tarifa> listTarifasTemp = new ArrayList<>();
+                Tarifa tar= new Tarifa();
+                tar.setIdTarifa(idTarifa);
+                tar.setValorTarifa(valorTarifa);
+                tar.setTipoTarifa(tipoTarifa);
+                listTarifasTemp.add(tar);
+                if(this.getListaTF()!=null){
+                    listTarifasTemp=this.getListaTF();
+                } 
+                System.out.println(tar.getIdTarifa());
+                this.setListaTF(listTarifasTemp);
+                return true;
+            } catch (Exception e) {
+                throw e;
+            }
 	}
 	
 	public boolean modificarTarifa(Integer valorTarifa, String tipoTarifa){
@@ -61,8 +78,10 @@ public class FranjaDeHorario {
 	}
 	
 	public List<Tarifa> consultarTarifas(){
-		
-		return null;
+		List<Tarifa> a= new ArrayList<>();
+                a=this.getListaTF();
+                
+		return a;
 		
 	}
 	

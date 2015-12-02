@@ -7,7 +7,10 @@ import java.util.Properties;
 
 import com.co.sistematransporte.clases.AdminEstacion;
 import com.co.sistematransporte.clases.AdminMediosTransporte;
+import com.co.sistematransporte.clases.FranjaDeHorario;
 import com.co.sistematransporte.clases.Ruta;
+import com.co.sistematransporte.clases.Tarifa;
+import java.util.ArrayList;
 
 public class STControl {
 
@@ -63,5 +66,32 @@ public class STControl {
 		}
 		
 	}
+        
+        
+        /*-------------------------------------------------------------
+        --------------------NO SE SI ESTE BN REVISAR----------------------------------------
+        --------------------------TARIFAS---------------------------------*/
+        public boolean agregarTarifa(String idTarifa,String nombre,Integer cantidad){
+            try {
+                FranjaDeHorario franja= new FranjaDeHorario();
+                boolean agregarTarifa = franja.agregarTarifa(idTarifa, cantidad, nombre);
+                return agregarTarifa;
+            } catch (Exception e) {
+                throw e;
+            }   
+        }
+        public List<Tarifa> consultarTarifas(){
+            try {
+                
+                FranjaDeHorario franja= new FranjaDeHorario();
+                
+                List<Tarifa> lst= new ArrayList<>();
+                
+                        lst=franja.consultarTarifas();
+                return lst;
+            } catch (Exception e) {
+                throw e;
+            } 
+        }
 	
 }

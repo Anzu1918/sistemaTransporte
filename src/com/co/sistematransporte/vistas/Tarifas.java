@@ -5,7 +5,13 @@
  */
 package com.co.sistematransporte.vistas;
 
+import com.co.sistematransporte.clases.Tarifa;
 import com.co.sistematransporte.clases.Utilidades;
+import com.co.sistematransporte.controladores.STControl;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -194,7 +200,25 @@ public class Tarifas extends javax.swing.JInternalFrame {
                 if(!txtIDTarifa.getText().equals("")){
                     Utilidades ut = new Utilidades();
                     if(ut.isNumeric(txtValor.getText())){
-                        model.addRow(new Object[]{txtIDTarifa.getText(),txtTipoTarifa.getText(),txtValor.getText()});
+                        //model.addRow(new Object[]{txtIDTarifa.getText(),txtTipoTarifa.getText(),txtValor.getText()});
+                        STControl controlador = new STControl();
+                        boolean res = controlador.agregarTarifa(txtIDTarifa.getText(), txtTipoTarifa.getText(), Integer.parseInt(txtValor.getText()));
+                        if(res){
+                            JOptionPane.showMessageDialog(this, "Se agrego el vehiculo");
+                            List<Tarifa> lst=new ArrayList<>();
+                            lst=controlador.consultarTarifas();
+                            
+                            System.out.println("a"+Integer.toString(lst.size()));
+                            Iterator<Tarifa> ite=lst.iterator();
+                            System.out.println("b");
+                            /*for(Tarifa tar : it){
+                                
+                            }*/
+                        }else{
+                            JOptionPane.showMessageDialog(this, "No se pudo agregar el vehiculo");
+                        }
+                            
+                        
                         idTarifa++;
                         limpiar();
                         txtIDTarifa.setText(Integer.toString(idTarifa));
