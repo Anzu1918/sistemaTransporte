@@ -43,6 +43,7 @@ public class Principal extends javax.swing.JFrame {
         btnVehiculos = new javax.swing.JButton();
         btnMedioTransporte = new javax.swing.JButton();
         btnFranjaHoraria = new javax.swing.JButton();
+        btnParaderos = new javax.swing.JButton();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         escritorio = new javax.swing.JDesktopPane();
 
@@ -53,7 +54,7 @@ public class Principal extends javax.swing.JFrame {
 
         btnConsultas.setText("Consultas");
         jLayeredPane1.add(btnConsultas);
-        btnConsultas.setBounds(10, 470, 170, 70);
+        btnConsultas.setBounds(10, 430, 170, 70);
 
         btnTarifas.setText("Tarifas");
         btnTarifas.addActionListener(new java.awt.event.ActionListener() {
@@ -62,7 +63,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jLayeredPane1.add(btnTarifas);
-        btnTarifas.setBounds(10, 70, 170, 70);
+        btnTarifas.setBounds(10, 30, 170, 70);
 
         btnRutas.setText("Rutas");
         btnRutas.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +72,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jLayeredPane1.add(btnRutas);
-        btnRutas.setBounds(10, 150, 170, 70);
+        btnRutas.setBounds(10, 110, 170, 70);
 
         btnVehiculos.setText("Vehiculos");
         btnVehiculos.addActionListener(new java.awt.event.ActionListener() {
@@ -80,15 +81,19 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jLayeredPane1.add(btnVehiculos);
-        btnVehiculos.setBounds(10, 230, 170, 70);
+        btnVehiculos.setBounds(10, 190, 170, 70);
 
         btnMedioTransporte.setText("Medios Transporte");
         jLayeredPane1.add(btnMedioTransporte);
-        btnMedioTransporte.setBounds(10, 310, 170, 70);
+        btnMedioTransporte.setBounds(10, 270, 170, 70);
 
         btnFranjaHoraria.setText("Franja Horaria");
         jLayeredPane1.add(btnFranjaHoraria);
-        btnFranjaHoraria.setBounds(10, 390, 170, 70);
+        btnFranjaHoraria.setBounds(10, 350, 170, 70);
+
+        btnParaderos.setText("Consultas");
+        jLayeredPane1.add(btnParaderos);
+        btnParaderos.setBounds(10, 510, 170, 70);
 
         getContentPane().add(jLayeredPane1);
         jLayeredPane1.setBounds(0, 0, 200, 600);
@@ -212,6 +217,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btnConsultas;
     private javax.swing.JButton btnFranjaHoraria;
     private javax.swing.JButton btnMedioTransporte;
+    private javax.swing.JButton btnParaderos;
     private javax.swing.JButton btnRutas;
     private javax.swing.JButton btnTarifas;
     private javax.swing.JButton btnVehiculos;

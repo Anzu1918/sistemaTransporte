@@ -51,6 +51,7 @@ public class Tarifas extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Tarifas");
         setToolTipText("Tarifas");
+        setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -192,10 +193,10 @@ public class Tarifas extends javax.swing.JInternalFrame {
         try {
             DefaultTableModel model= (DefaultTableModel) tblTarifa.getModel();
             if(!txtIDTarifa.getText().equals("")){
-                if(!txtTipoTarifa.getText().equals("")){
+                if(!txtIDTarifa.getText().equals("")){
                     Utilidades ut = new Utilidades();
                     if(ut.isNumeric(txtValor.getText())){
-                        model.addRow(new Object[]{this.txtIDTarifa.getText(),this.txtTipoTarifa.getText(),this.txtValor.getText()});
+                        model.addRow(new Object[]{txtIDTarifa.getText(),txtTipoTarifa.getText(),txtValor.getText()});
                         idTarifa++;
                         limpiar();
                         txtIDTarifa.setText(Integer.toString(idTarifa));
@@ -218,7 +219,7 @@ public class Tarifas extends javax.swing.JInternalFrame {
     
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-        int numFilaSeleccionada=this.tblTarifa.getSelectedRow();
+        int numFilaSeleccionada=tblTarifa.getSelectedRow();
         if(numFilaSeleccionada>=0){
             
         }else{
@@ -246,10 +247,10 @@ public class Tarifas extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnCancelarActionPerformed
     public void limpiar(){
-        this.txtIDTarifa.setText("");
-        this.txtTipoTarifa.setText("");
-        this.txtValor.setText("");
-        this.txtIDTarifa.requestFocus();
+        txtIDTarifa.setText("");
+        txtTipoTarifa.setText("");
+        txtValor.setText("");
+        txtIDTarifa.requestFocus();
     }
     public void manejoBotonera(boolean nuevo,boolean guardar,boolean modificar,boolean eliminar,boolean cancelar){
         btnNuevo.setEnabled(nuevo);
