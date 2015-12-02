@@ -9,8 +9,6 @@ import javax.swing.border.EmptyBorder;
 
 public class InitDatos extends JFrame {
 
-	private JPanel contentPane;
-
 	/**
 	 * Launch the application.
 	 */
@@ -18,8 +16,8 @@ public class InitDatos extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					InitDatos frame = new InitDatos();
-					frame.setVisible(true);
+					Principal princ =new Principal();
+                                        princ.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -33,10 +31,11 @@ public class InitDatos extends JFrame {
 	public InitDatos() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		/*contentPane = new JPanel();
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+		setContentPane(contentPane);*/
 	}
 
 }
