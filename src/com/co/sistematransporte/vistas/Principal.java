@@ -88,7 +88,7 @@ public class Principal extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 580, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,7 +96,7 @@ public class Principal extends javax.swing.JFrame {
         );
 
         jLayeredPane2.add(escritorio);
-        escritorio.setBounds(0, 0, 600, 600);
+        escritorio.setBounds(0, 0, 580, 600);
 
         getContentPane().add(jLayeredPane2);
         jLayeredPane2.setBounds(200, 0, 600, 600);
