@@ -15,7 +15,7 @@ public class STControl {
 		
 		} catch (Exception e){
 			
-			e.getMessage();
+			System.out.println(e.getMessage());
 			
 		}
 		
