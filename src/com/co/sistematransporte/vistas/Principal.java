@@ -30,7 +30,8 @@ public class Principal extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     
     Tarifas tar;
-    
+    Rutas rutas;
+    Vehiculos veh;
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -64,10 +65,20 @@ public class Principal extends javax.swing.JFrame {
         btnTarifas.setBounds(10, 70, 170, 70);
 
         btnRutas.setText("Rutas");
+        btnRutas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRutasActionPerformed(evt);
+            }
+        });
         jLayeredPane1.add(btnRutas);
         btnRutas.setBounds(10, 150, 170, 70);
 
         btnVehiculos.setText("Vehiculos");
+        btnVehiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVehiculosActionPerformed(evt);
+            }
+        });
         jLayeredPane1.add(btnVehiculos);
         btnVehiculos.setBounds(10, 230, 170, 70);
 
@@ -118,9 +129,37 @@ public class Principal extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error: "+e.getMessage());
         }
-            
-        
     }//GEN-LAST:event_btnTarifasActionPerformed
+
+    private void btnRutasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRutasActionPerformed
+        // TODO add your handling code here:
+        try {
+            if(estacerrado(rutas)) {
+                rutas = new Rutas();
+                escritorio.add(rutas);
+                rutas.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null,"La ventana de rutas ya se encuentra abierta!");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: "+e.getMessage());
+        }
+    }//GEN-LAST:event_btnRutasActionPerformed
+
+    private void btnVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosActionPerformed
+        // TODO add your handling code here:
+        try {
+            if(estacerrado(veh)) {
+                veh = new Vehiculos();
+                escritorio.add(veh);
+                veh.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null,"La ventana de Vehiculos ya se encuentra abierta!");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: "+e.getMessage());
+        }
+    }//GEN-LAST:event_btnVehiculosActionPerformed
     public boolean estacerrado(Object obj){
     JInternalFrame[] activos=escritorio.getAllFrames();
     boolean cerrado=true;

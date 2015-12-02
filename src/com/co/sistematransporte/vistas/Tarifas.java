@@ -5,6 +5,10 @@
  */
 package com.co.sistematransporte.vistas;
 
+import com.co.sistematransporte.clases.Utilidades;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Leonardo Forero
@@ -29,11 +33,17 @@ public class Tarifas extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         txtValor = new javax.swing.JTextField();
-        cboTipo = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        tblTarifa = new javax.swing.JTable();
+        btnEliminar = new javax.swing.JButton();
+        btnNuevo = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txtTipoTarifa = new javax.swing.JTextField();
+        txtIDTarifa = new javax.swing.JTextField();
+        btnCancelar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -41,6 +51,23 @@ public class Tarifas extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Tarifas");
         setToolTipText("Tarifas");
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -48,75 +75,204 @@ public class Tarifas extends javax.swing.JInternalFrame {
         jLabel1.setText("Tipo Tarifa");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 20, 110, 30);
+        jLabel1.setBounds(20, 60, 110, 30);
 
         txtValor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtValor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtValorActionPerformed(evt);
-            }
-        });
         getContentPane().add(txtValor);
-        txtValor.setBounds(130, 60, 150, 26);
-
-        cboTipo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cboTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(cboTipo);
-        cboTipo.setBounds(130, 20, 150, 30);
+        txtValor.setBounds(130, 100, 150, 30);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Valor");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 60, 110, 30);
+        jLabel2.setBounds(20, 100, 110, 30);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblTarifa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Tipo Tarifa", "Valor"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+            };
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 150, 452, 310);
-
-        jButton1.setText("Nuevo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(340, 20, 63, 23);
+        jScrollPane1.setViewportView(tblTarifa);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(10, 180, 452, 280);
+
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setEnabled(false);
+        getContentPane().add(btnEliminar);
+        btnEliminar.setBounds(390, 60, 90, 30);
+
+        btnNuevo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNuevo);
+        btnNuevo.setBounds(290, 20, 90, 29);
+
+        btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.setEnabled(false);
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGuardar);
+        btnGuardar.setBounds(390, 20, 90, 30);
+
+        btnModificar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnModificar.setText("Modificar");
+        btnModificar.setEnabled(false);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnModificar);
+        btnModificar.setBounds(290, 60, 90, 30);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("ID");
+        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(20, 20, 110, 30);
+
+        txtTipoTarifa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        getContentPane().add(txtTipoTarifa);
+        txtTipoTarifa.setBounds(130, 60, 150, 30);
+
+        txtIDTarifa.setEditable(false);
+        txtIDTarifa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        getContentPane().add(txtIDTarifa);
+        txtIDTarifa.setBounds(130, 20, 150, 30);
+
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setEnabled(false);
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCancelar);
+        btnCancelar.setBounds(290, 100, 90, 29);
 
         setBounds(0, 0, 500, 500);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorActionPerformed
+    int idTarifa=0;
+    
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtValorActionPerformed
+        limpiar();
+        manejoBotonera(false, true, false, false,true);
+        txtIDTarifa.setText(Integer.toString(idTarifa));
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+   
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-       
-              
-    }//GEN-LAST:event_jButton1ActionPerformed
+        try {
+            DefaultTableModel model= (DefaultTableModel) tblTarifa.getModel();
+            if(!txtIDTarifa.getText().equals("")){
+                if(!txtTipoTarifa.getText().equals("")){
+                    Utilidades ut = new Utilidades();
+                    if(ut.isNumeric(txtValor.getText())){
+                        model.addRow(new Object[]{this.txtIDTarifa.getText(),this.txtTipoTarifa.getText(),this.txtValor.getText()});
+                        idTarifa++;
+                        limpiar();
+                        txtIDTarifa.setText(Integer.toString(idTarifa));
+                        manejoBotonera(true, false, true, true,false);
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Digite el valor de la Tarifa!!");
+                    }
+                }else{
+                     JOptionPane.showMessageDialog(this, "Digite el Tipo de la Tarifa!!");
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "Digite ID de la Tarifa!!");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: "+e.getMessage());
+        }
+            
+        
+    }//GEN-LAST:event_btnGuardarActionPerformed
+    
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+        int numFilaSeleccionada=this.tblTarifa.getSelectedRow();
+        if(numFilaSeleccionada>=0){
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccione una tarifa para modificar!!");
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
 
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+        // TODO add your handling code here:
+        int numFilas=tblTarifa.getRowCount();
+        if(numFilas>0){
+            manejoBotonera(true, false, true, true,false);
+        }else{
+            idTarifa=1;            
+        }
+    }//GEN-LAST:event_formInternalFrameOpened
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        if(tblTarifa.getRowCount()>0){
+            manejoBotonera(true, false, true, true, false);
+        }else{
+            manejoBotonera(true, false, false, false, false);
+        }
+        
+    }//GEN-LAST:event_btnCancelarActionPerformed
+    public void limpiar(){
+        this.txtIDTarifa.setText("");
+        this.txtTipoTarifa.setText("");
+        this.txtValor.setText("");
+        this.txtIDTarifa.requestFocus();
+    }
+    public void manejoBotonera(boolean nuevo,boolean guardar,boolean modificar,boolean eliminar,boolean cancelar){
+        btnNuevo.setEnabled(nuevo);
+        btnGuardar.setEnabled(guardar);
+        btnModificar.setEnabled(modificar);
+        btnEliminar.setEnabled(eliminar);
+        btnCancelar.setEnabled(cancelar);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox cboTipo;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnNuevo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblTarifa;
+    private javax.swing.JTextField txtIDTarifa;
+    private javax.swing.JTextField txtTipoTarifa;
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 }
