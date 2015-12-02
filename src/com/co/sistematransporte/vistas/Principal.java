@@ -160,17 +160,18 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error: "+e.getMessage());
         }
     }//GEN-LAST:event_btnVehiculosActionPerformed
+   
     public boolean estacerrado(Object obj){
-    JInternalFrame[] activos=escritorio.getAllFrames();
-    boolean cerrado=true;
-    int i=0;
-    while (i<activos.length && cerrado){
-    if(activos[i]==obj){
-    cerrado=false;
-    }
-    i++;
-    }
-    return cerrado;
+        JInternalFrame[] activos=escritorio.getAllFrames();
+        boolean cerrado=true;
+        int i=0;
+        while (i<activos.length && cerrado){
+            if(activos[i]==obj){
+                cerrado=false;
+            }
+            i++;
+        }
+        return cerrado;
     }
     /**
      * @param args the command line arguments
