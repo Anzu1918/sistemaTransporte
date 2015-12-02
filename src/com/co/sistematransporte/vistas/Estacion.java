@@ -45,6 +45,9 @@ public class Estacion extends javax.swing.JInternalFrame {
         txtIDEstacion = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+
         lblNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombre.setText("Nombre");

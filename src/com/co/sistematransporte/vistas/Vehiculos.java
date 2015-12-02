@@ -51,6 +51,11 @@ public class Vehiculos extends javax.swing.JInternalFrame {
         lblNombre1 = new javax.swing.JLabel();
         txtMarca = new javax.swing.JTextField();
 
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Vehiculos");
+        setToolTipText("Vehiculos");
+
         lblNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombre.setText("Tipo Vehiculo");
@@ -229,6 +234,8 @@ public class Vehiculos extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

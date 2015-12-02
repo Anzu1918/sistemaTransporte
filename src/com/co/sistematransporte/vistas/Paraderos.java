@@ -45,6 +45,11 @@ public class Paraderos extends javax.swing.JInternalFrame {
         txtIDParaderos = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Paraderos");
+        setToolTipText("Paraderos");
+
         lblNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombre.setText("Nombre");

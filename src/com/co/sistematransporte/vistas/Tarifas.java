@@ -47,8 +47,6 @@ public class Tarifas extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
         setTitle("Tarifas");
         setToolTipText("Tarifas");
         setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N

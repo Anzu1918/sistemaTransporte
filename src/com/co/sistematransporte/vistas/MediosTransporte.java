@@ -45,6 +45,11 @@ public class MediosTransporte extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMedioTransporte = new javax.swing.JTable();
 
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Medios de Transporte");
+        setToolTipText("Medios de Transporte");
+
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.setEnabled(false);

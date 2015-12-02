@@ -5,6 +5,7 @@
  */
 package com.co.sistematransporte.vistas;
 
+import com.co.sistematransporte.clases.MedioTransporte;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
@@ -32,6 +33,10 @@ public class Principal extends javax.swing.JFrame {
     Tarifas tar;
     Rutas rutas;
     Vehiculos veh;
+    Paraderos par;
+    Estacion est;
+    FranjaHoraria franja;
+    MediosTransporte medioTr;
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -50,11 +55,17 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        jLayeredPane1.setToolTipText("");
         jLayeredPane1.setMinimumSize(new java.awt.Dimension(200, 600));
 
         btnConsultas.setText("Consultas");
+        btnConsultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultasActionPerformed(evt);
+            }
+        });
         jLayeredPane1.add(btnConsultas);
-        btnConsultas.setBounds(10, 430, 170, 70);
+        btnConsultas.setBounds(10, 410, 170, 70);
 
         btnTarifas.setText("Tarifas");
         btnTarifas.addActionListener(new java.awt.event.ActionListener() {
@@ -63,7 +74,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jLayeredPane1.add(btnTarifas);
-        btnTarifas.setBounds(10, 30, 170, 70);
+        btnTarifas.setBounds(10, 10, 170, 70);
 
         btnRutas.setText("Rutas");
         btnRutas.addActionListener(new java.awt.event.ActionListener() {
@@ -72,7 +83,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jLayeredPane1.add(btnRutas);
-        btnRutas.setBounds(10, 110, 170, 70);
+        btnRutas.setBounds(10, 90, 170, 70);
 
         btnVehiculos.setText("Vehiculos");
         btnVehiculos.addActionListener(new java.awt.event.ActionListener() {
@@ -81,43 +92,62 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jLayeredPane1.add(btnVehiculos);
-        btnVehiculos.setBounds(10, 190, 170, 70);
+        btnVehiculos.setBounds(10, 170, 170, 70);
 
         btnMedioTransporte.setText("Medios Transporte");
+        btnMedioTransporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMedioTransporteActionPerformed(evt);
+            }
+        });
         jLayeredPane1.add(btnMedioTransporte);
-        btnMedioTransporte.setBounds(10, 270, 170, 70);
+        btnMedioTransporte.setBounds(10, 250, 170, 70);
 
         btnFranjaHoraria.setText("Franja Horaria");
+        btnFranjaHoraria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFranjaHorariaActionPerformed(evt);
+            }
+        });
         jLayeredPane1.add(btnFranjaHoraria);
-        btnFranjaHoraria.setBounds(10, 350, 170, 70);
+        btnFranjaHoraria.setBounds(10, 330, 170, 70);
 
-        btnParaderos.setText("Consultas");
+        btnParaderos.setText("Paraderos");
+        btnParaderos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnParaderosActionPerformed(evt);
+            }
+        });
         jLayeredPane1.add(btnParaderos);
-        btnParaderos.setBounds(10, 510, 170, 70);
+        btnParaderos.setBounds(10, 490, 170, 70);
 
         getContentPane().add(jLayeredPane1);
         jLayeredPane1.setBounds(0, 0, 200, 600);
 
         jLayeredPane2.setPreferredSize(new java.awt.Dimension(600, 600));
 
+        escritorio.setMinimumSize(new java.awt.Dimension(600, 600));
+        escritorio.setPreferredSize(new java.awt.Dimension(600, 600));
+        escritorio.setVerifyInputWhenFocusTarget(false);
+
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 680, Short.MAX_VALUE)
         );
 
         jLayeredPane2.add(escritorio);
-        escritorio.setBounds(0, 0, 580, 600);
+        escritorio.setBounds(0, 0, 600, 680);
 
         getContentPane().add(jLayeredPane2);
-        jLayeredPane2.setBounds(200, 0, 600, 600);
+        jLayeredPane2.setBounds(200, 0, 600, 3000);
 
-        setSize(new java.awt.Dimension(800, 639));
+        setSize(new java.awt.Dimension(816, 638));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -165,6 +195,56 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error: "+e.getMessage());
         }
     }//GEN-LAST:event_btnVehiculosActionPerformed
+
+    private void btnMedioTransporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedioTransporteActionPerformed
+        // TODO add your handling code here:
+        try {
+            if(estacerrado(medioTr)) {
+                medioTr = new MediosTransporte();
+                escritorio.add(medioTr);
+                medioTr.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null,"La ventana de Medio de Transporte ya se encuentra abierta!");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: "+e.getMessage());
+        }
+    }//GEN-LAST:event_btnMedioTransporteActionPerformed
+
+    private void btnFranjaHorariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFranjaHorariaActionPerformed
+        // TODO add your handling code here:
+        try {
+            if(estacerrado(franja)) {
+                franja = new FranjaHoraria();
+                escritorio.add(franja);
+                franja.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null,"La ventana Franja Horaria ya se encuentra abierta!");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: "+e.getMessage());
+        }
+    }//GEN-LAST:event_btnFranjaHorariaActionPerformed
+
+    private void btnConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultasActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnConsultasActionPerformed
+
+    private void btnParaderosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnParaderosActionPerformed
+        // TODO add your handling code here:
+        try {
+            if(estacerrado(par)) {
+                par = new Paraderos();
+                escritorio.add(par);
+                par.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null,"La ventana Franja Horaria ya se encuentra abierta!");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: "+e.getMessage());
+        }
+    }//GEN-LAST:event_btnParaderosActionPerformed
    
     public boolean estacerrado(Object obj){
         JInternalFrame[] activos=escritorio.getAllFrames();
